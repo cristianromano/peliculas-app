@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>Pais</mat-label>
+  <mat-select (selectionChange)="emitirSeleccion($event.value)">
+    <mat-option *ngFor="let bandera of banderasArr" [value]="bandera.name">
+      {{ bandera.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

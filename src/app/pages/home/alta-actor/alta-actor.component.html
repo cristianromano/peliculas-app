@@ -1,0 +1,54 @@
+<div class="flex-container">
+  <form
+    [formGroup]="formGroup"
+    class="centered-div"
+    (ngSubmit)="onSubmit()"
+    class="centered-div"
+  >
+    <!-- Contenido de tu div centrado -->
+    <mat-form-field hintLabel="Max 10 characters">
+      <mat-label>Escriba el Nombre</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="Nombre"
+        formControlName="nombre"
+      />
+      <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 10 characters">
+      <mat-label>Escriba Apellido</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="Apellido"
+        formControlName="apellido"
+      />
+      <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 10 characters">
+      <mat-label>Edad</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="Edad"
+        formControlName="edad"
+      />
+      <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
+    </mat-form-field>
+    <app-banderas
+      (banderaSeleccionada)="capturarSeleccion($event)"
+    ></app-banderas>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="!formGroup.valid || !bandera"
+    >
+      Primary
+    </button>
+  </form>
+</div>
