@@ -3,6 +3,7 @@ import { BanderasService } from 'src/app/services/banderas.service';
 
 interface Bandera {
   name: string;
+  bandera: string;
 }
 
 @Component({
@@ -19,8 +20,12 @@ export class BanderasComponent implements OnInit {
   ngOnInit(): void {
     this.banderas.getBanderas().subscribe((data: any) => {
       data.forEach((element: any) => {
-        this.banderasArr.push({ name: element.name.common });
+        this.banderasArr.push({
+          name: element.name.common,
+          bandera: element.flags.svg,
+        });
       });
+      console.log(this.banderasArr);
     });
   }
 

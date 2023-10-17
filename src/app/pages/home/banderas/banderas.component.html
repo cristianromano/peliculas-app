@@ -3,6 +3,7 @@
   <mat-select (selectionChange)="emitirSeleccion($event.value)">
     <mat-option *ngFor="let bandera of banderasArr" [value]="bandera.name">
       {{ bandera.name }}
+      <img [src]="bandera.bandera" style="height: 10px" />
     </mat-option>
   </mat-select>
 </mat-form-field>
