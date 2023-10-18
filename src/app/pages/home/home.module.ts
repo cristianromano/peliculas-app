@@ -22,7 +22,7 @@ import { MatTableModule } from '@angular/material/table';
     HomeRoutingModule,
     MatInputModule,
     MatFormFieldModule,
-    BrowserAnimationsModule,
+
     MatButtonModule,
     MatSelectModule,
     FormsModule,

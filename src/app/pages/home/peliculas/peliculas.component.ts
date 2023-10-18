@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
@@ -23,6 +24,9 @@ export class PeliculasComponent implements OnInit {
   data: Peliculas[] = [];
   app = initializeApp(environment.firebase);
   db = getFirestore(this.app);
+
+  constructor(private route: Router) {}
+
   ngOnInit(): void {
     getDocs(collection(this.db, 'peliculas')).then((e) => {
       e.forEach((element) => {
@@ -39,5 +43,9 @@ export class PeliculasComponent implements OnInit {
       });
       console.log(this.data);
     });
+  }
+
+  irAltaPelicula() {
+    this.route.navigate(['/peliculas/alta']);
   }
 }
