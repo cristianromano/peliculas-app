@@ -13,12 +13,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ActoresComponent } from './actores/actores.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [PeliculasComponent, PeliculaAltaComponent, ActoresComponent],
   imports: [
     CommonModule,
     PeliculasRoutingModule,
+    MatCardModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
