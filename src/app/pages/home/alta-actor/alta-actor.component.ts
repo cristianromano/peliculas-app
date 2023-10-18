@@ -59,6 +59,8 @@ export class AltaActorComponent implements OnInit {
       edad: this.formGroup.get('edad')?.value,
       pais: this.bandera,
     };
-    await addDoc(collection(this.db, 'actores'), docData);
+    await addDoc(collection(this.db, 'actores'), docData).then((e) => {
+      this.formGroup.reset();
+    });
   }
 }

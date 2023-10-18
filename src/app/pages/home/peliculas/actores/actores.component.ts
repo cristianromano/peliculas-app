@@ -8,6 +8,7 @@ interface DataActor {
   apellido: string;
   pais: string;
 }
+const dataSource2: DataActor[] = [];
 
 @Component({
   selector: 'app-actores',
@@ -16,14 +17,13 @@ interface DataActor {
 })
 export class ActoresComponent {
   @Output() seleccionarFila = new EventEmitter<any>();
-
   dataSource: DataActor[] = [];
   displayedColumns: string[] = ['nombre', 'apellido', 'pais'];
   app = initializeApp(environment.firebase);
   db = getFirestore(this.app);
 
   clickedRows = new Set<DataActor>();
-  actoresGuardados: DataActor[] = [];
+
   constructor() {}
 
   async ngOnInit() {
@@ -37,8 +37,16 @@ export class ActoresComponent {
             pais: doc.data().pais,
           },
         ];
-        this.dataSource = data;
+
+        data.forEach((element) => {
+          dataSource2.push({
+            nombre: element.nombre,
+            apellido: element.apellido,
+            pais: element.pais,
+          });
+        });
       });
+      this.dataSource = dataSource2;
     } catch (error) {
       console.error('Error al obtener documentos:', error);
     }

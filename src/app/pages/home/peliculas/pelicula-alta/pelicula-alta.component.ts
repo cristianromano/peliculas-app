@@ -50,7 +50,9 @@ export class PeliculaAltaComponent implements OnInit {
         foto: this.imagen,
         actor: this.actorArr,
       };
-      await addDoc(collection(this.db, 'peliculas'), docData);
+      await addDoc(collection(this.db, 'peliculas'), docData).then((e) => {
+        this.formGroup.reset();
+      });
     }
   }
 
