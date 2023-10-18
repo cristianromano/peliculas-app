@@ -1,5 +1,5 @@
 .example-card {
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .flex-container {
@@ -9,4 +9,21 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  border: 1px solid red;
+  background-color: rgb(51, 84, 145);
+}
+
+.flex-container-dos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: rgb(39, 88, 179);
+}
+
+img {
+  height: 150px;
+  width: 150px;
 }

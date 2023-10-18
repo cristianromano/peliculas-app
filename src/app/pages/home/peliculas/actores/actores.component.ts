@@ -53,6 +53,12 @@ export class ActoresComponent {
   }
 
   seleccionFila($event: any) {
+    $event.forEach((element: any) => {
+      if (this.clickedRows.has(element) && this.clickedRows.size > 1) {
+        this.clickedRows.delete(element);
+      }
+    });
+
     this.clickedRows.forEach((e) => {
       this.seleccionarFila.emit(e);
     });

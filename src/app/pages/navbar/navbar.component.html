@@ -1,14 +1,7 @@
 <mat-toolbar>
   <span><a [routerLink]="irSegunLog()">Laboratorio IV</a> </span>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-    (click)="redirigirBio()"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
+
   <div *ngIf="userEmail; else noLogueado">
     <p style="margin: 1px">{{ userEmail }}</p>
     <button

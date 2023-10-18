@@ -24,10 +24,16 @@ export class PeliculasComponent implements OnInit {
   data: Peliculas[] = [];
   app = initializeApp(environment.firebase);
   db = getFirestore(this.app);
+  actorArr: any;
+  peliculasActor: Peliculas[] = [];
 
   constructor(private route: Router) {}
 
   ngOnInit(): void {
+    this.getPeliculas();
+  }
+
+  getPeliculas() {
     getDocs(collection(this.db, 'peliculas')).then((e) => {
       e.forEach((element) => {
         this.data.push({
@@ -47,5 +53,28 @@ export class PeliculasComponent implements OnInit {
 
   irAltaPelicula() {
     this.route.navigate(['/peliculas/alta']);
+  }
+
+  actorPeliculas($event: any) {
+    this.actorArr = [];
+    this.peliculasActor = [];
+    this.actorArr = $event;
+    this.data.forEach((e) => {
+      if (
+        e.actor.nombre == this.actorArr.nombre &&
+        e.actor.apellido == this.actorArr.apellido
+      ) {
+        this.peliculasActor.push({
+          actor: {
+            nombre: e.actor.nombre,
+            apellido: e.actor.apellido,
+            pais: e.actor.pais,
+          },
+          descripcion: e.descripcion,
+          foto: e.foto,
+          titulo: e.titulo,
+        });
+      }
+    });
   }
 }

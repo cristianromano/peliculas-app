@@ -15,9 +15,7 @@ export class NavbarComponent {
 
   userEmail: string | null = null;
   constructor(private route: Router) {}
-  redirigirBio() {
-    this.route.navigate(['/bio']);
-  }
+
   logOut() {
     this.auth.signOut();
     this.route.navigate(['/']);
