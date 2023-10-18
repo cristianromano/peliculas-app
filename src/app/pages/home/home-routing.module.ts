@@ -9,6 +9,11 @@ const routes: Routes = [
     path: 'home/alta-actor',
     component: AltaActorComponent,
   },
+  {
+    path: 'peliculas',
+    loadChildren: () =>
+      import('./peliculas/peliculas.module').then((m) => m.PeliculasModule),
+  },
 ];
 
 @NgModule({

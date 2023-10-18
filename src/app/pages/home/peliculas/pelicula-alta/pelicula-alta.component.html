@@ -1,0 +1,44 @@
+<div class="flex-container">
+  <form
+    [formGroup]="formGroup"
+    class="centered-div"
+    (ngSubmit)="onSubmit()"
+    class="centered-div"
+  >
+    <mat-form-field hintLabel="Max 20 characters">
+      <mat-label>Nombre de la Pelicula</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="Nombre"
+        formControlName="nombre"
+      />
+      <mat-hint align="end">{{ input.value.length }}/20</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Descripcion de la pelicula</mat-label>
+      <textarea
+        matInput
+        formControlName="descripcion"
+        style="resize: none; padding-bottom: 550px; overflow-y: hidden"
+      >
+      </textarea>
+    </mat-form-field>
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      style="margin-bottom: 20px"
+    />
+    <app-actores (seleccionarFila)="actor($event)"></app-actores>
+    <button
+      style="margin-top: 20px"
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="!formGroup.valid || !file || !actorArr"
+    >
+      Enviar
+    </button>
+  </form>
+</div>
