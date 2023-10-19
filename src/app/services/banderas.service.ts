@@ -10,4 +10,8 @@ export class BanderasService {
   getBanderas() {
     return this.http.get('https://restcountries.com/v3.1/all');
   }
+
+  getBanderaNombre(name: string) {
+    return this.http.get(`https://restcountries.com/v3.1/name/${name}`);
+  }
 }

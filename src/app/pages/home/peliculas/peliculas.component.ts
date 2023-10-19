@@ -26,7 +26,8 @@ export class PeliculasComponent implements OnInit {
   db = getFirestore(this.app);
   actorArr: any;
   peliculasActor: Peliculas[] = [];
-
+  bandera?: string;
+  nombreCompleto?: string;
   constructor(private route: Router) {}
 
   ngOnInit(): void {
@@ -47,7 +48,6 @@ export class PeliculasComponent implements OnInit {
           titulo: element.data()['nombre'],
         });
       });
-      console.log(this.data);
     });
   }
 
@@ -58,7 +58,9 @@ export class PeliculasComponent implements OnInit {
   actorPeliculas($event: any) {
     this.actorArr = [];
     this.peliculasActor = [];
+    this.bandera = undefined;
     this.actorArr = $event;
+
     this.data.forEach((e) => {
       if (
         e.actor.nombre == this.actorArr.nombre &&
@@ -74,7 +76,13 @@ export class PeliculasComponent implements OnInit {
           foto: e.foto,
           titulo: e.titulo,
         });
+        this.bandera = this.peliculasActor[0].actor.pais;
+        this.nombreCompleto = `${this.peliculasActor[0].actor.nombre} ${this.peliculasActor[0].actor.apellido}`;
       }
     });
+
+    if (this.bandera == undefined) {
+      this.bandera = '';
+    }
   }
 }

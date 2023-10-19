@@ -7,6 +7,7 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SubirStorageService } from 'src/app/services/subir-storage.service';
 
 @Component({
   selector: 'app-alta-actor',
@@ -18,6 +19,8 @@ export class AltaActorComponent implements OnInit {
   db = getFirestore(this.app);
   auth = getAuth(this.app);
   bandera: any;
+  file?: any;
+  imagen: any;
   formGroup: FormGroup = this.formBuilder.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
@@ -28,7 +31,8 @@ export class AltaActorComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private storage: SubirStorageService
   ) {}
 
   ngOnInit(): void {}
@@ -53,14 +57,27 @@ export class AltaActorComponent implements OnInit {
   }
 
   async registroActor() {
-    const docData = {
-      nombre: this.formGroup.get('nombre')?.value,
-      apellido: this.formGroup.get('apellido')?.value,
-      edad: this.formGroup.get('edad')?.value,
-      pais: this.bandera,
-    };
-    await addDoc(collection(this.db, 'actores'), docData).then((e) => {
-      this.formGroup.reset();
+    this.uploadFile(this.file).then((e) => {
+      const docData = {
+        nombre: this.formGroup.get('nombre')?.value,
+        apellido: this.formGroup.get('apellido')?.value,
+        edad: this.formGroup.get('edad')?.value,
+        pais: this.bandera,
+        foto: this.imagen,
+      };
+      addDoc(collection(this.db, 'actores'), docData).then((e) => {
+        this.formGroup.reset();
+      });
     });
+  }
+
+  async uploadFile(file: File) {
+    if (this.file) {
+      this.imagen = await this.storage.subirArchivo(this.file, 'actores');
+    }
+  }
+
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
   }
 }

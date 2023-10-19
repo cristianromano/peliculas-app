@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
@@ -15,13 +23,13 @@ const dataSource2: DataActor[] = [];
   templateUrl: './actores.component.html',
   styleUrls: ['./actores.component.scss'],
 })
-export class ActoresComponent {
+export class ActoresComponent implements OnInit, OnChanges {
   @Output() seleccionarFila = new EventEmitter<any>();
   dataSource: DataActor[] = [];
   displayedColumns: string[] = ['nombre', 'apellido', 'pais'];
   app = initializeApp(environment.firebase);
   db = getFirestore(this.app);
-
+  @Input() actor?: any;
   clickedRows = new Set<DataActor>();
 
   constructor() {}
@@ -35,6 +43,7 @@ export class ActoresComponent {
             nombre: doc.data().nombre,
             apellido: doc.data().apellido,
             pais: doc.data().pais,
+            edad: doc.data().edad,
           },
         ];
 
@@ -49,6 +58,12 @@ export class ActoresComponent {
       this.dataSource = dataSource2;
     } catch (error) {
       console.error('Error al obtener documentos:', error);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.actor) {
+      console.log(this.actor);
     }
   }
 

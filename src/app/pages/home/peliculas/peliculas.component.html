@@ -14,6 +14,10 @@
       </mat-label>
     </mat-card-content>
   </mat-card>
+  <app-bandera-detalle
+    [datoBandera]="bandera ? bandera : ''"
+  ></app-bandera-detalle>
+  <app-actores-detalle [actor]="nombreCompleto"></app-actores-detalle>
   <div>
     <button mat-raised-button color="accent" (click)="irAltaPelicula()">
       Subir Pelicula

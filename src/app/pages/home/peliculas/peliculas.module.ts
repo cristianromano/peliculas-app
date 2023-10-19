@@ -14,9 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActoresComponent } from './actores/actores.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { BanderaDetalleComponent } from './bandera-detalle/bandera-detalle.component';
+import { ActoresDetalleComponent } from './actores-detalle/actores-detalle.component';
 
 @NgModule({
-  declarations: [PeliculasComponent, PeliculaAltaComponent, ActoresComponent],
+  declarations: [PeliculasComponent, PeliculaAltaComponent, ActoresComponent, BanderaDetalleComponent, ActoresDetalleComponent],
   imports: [
     CommonModule,
     PeliculasRoutingModule,

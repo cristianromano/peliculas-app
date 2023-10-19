@@ -57,7 +57,6 @@ export class PeliculaAltaComponent implements OnInit {
   }
 
   actor($event: any) {
-    debugger;
     this.actorArr = $event;
   }
 }
