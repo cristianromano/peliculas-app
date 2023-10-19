@@ -36,7 +36,6 @@ export class PeliculasComponent implements OnInit {
   }
 
   getPeliculas() {
-    debugger;
     getDocs(collection(this.db, 'peliculas')).then((e) => {
       e.forEach((element) => {
         this.data.push({
