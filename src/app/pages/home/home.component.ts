@@ -12,4 +12,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
+
+  IrPeliculas() {
+    this.route.navigate(['/peliculas']);
+  }
+
+  irActores() {
+    this.route.navigate(['/home/alta-actor']);
+  }
 }

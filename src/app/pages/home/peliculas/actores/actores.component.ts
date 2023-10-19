@@ -16,7 +16,6 @@ interface DataActor {
   apellido: string;
   pais: string;
 }
-const dataSource2: DataActor[] = [];
 
 @Component({
   selector: 'app-actores',
@@ -31,10 +30,11 @@ export class ActoresComponent implements OnInit, OnChanges {
   db = getFirestore(this.app);
   @Input() actor?: any;
   clickedRows = new Set<DataActor>();
-
+  dataSource2: DataActor[] = [];
   constructor() {}
 
   async ngOnInit() {
+    this.dataSource = [];
     try {
       const querySnapshot = await getDocs(collection(this.db, 'actores'));
       querySnapshot.forEach((doc: any) => {
@@ -48,14 +48,15 @@ export class ActoresComponent implements OnInit, OnChanges {
         ];
 
         data.forEach((element) => {
-          dataSource2.push({
+          this.dataSource2.push({
             nombre: element.nombre,
             apellido: element.apellido,
             pais: element.pais,
           });
         });
       });
-      this.dataSource = dataSource2;
+
+      this.dataSource = this.dataSource2;
     } catch (error) {
       console.error('Error al obtener documentos:', error);
     }

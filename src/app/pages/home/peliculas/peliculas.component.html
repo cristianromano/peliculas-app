@@ -1,5 +1,13 @@
 <div class="flex-container">
   <app-actores (seleccionarFila)="actorPeliculas($event)"></app-actores>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="irAltaPelicula()"
+    style="margin-left: 15px"
+  >
+    Subir Pelicula
+  </button>
 </div>
 <div class="flex-container-dos">
   <mat-card class="example-card" *ngFor="let item of peliculasActor">
@@ -15,14 +23,14 @@
     </mat-card-content>
   </mat-card>
   <div>
-    <div class="flex-container">
+    <div class="flex-container" style="margin-left: 15px">
       <app-bandera-detalle
         [datoBandera]="bandera ? bandera : ''"
       ></app-bandera-detalle>
-      <app-actores-detalle [actor]="nombreCompleto"></app-actores-detalle>
+      <app-actores-detalle
+        [actor]="nombreCompleto"
+        style="margin-left: 15px"
+      ></app-actores-detalle>
     </div>
   </div>
-  <button mat-raised-button color="accent" (click)="irAltaPelicula()">
-    Subir Pelicula
-  </button>
 </div>

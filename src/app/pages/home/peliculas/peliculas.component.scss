@@ -1,5 +1,6 @@
 .example-card {
   max-width: 500px;
+  background-color: gainsboro;
 }
 
 .flex-container {
@@ -9,8 +10,6 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-
-  background-color: rgb(51, 84, 145);
 }
 
 .flex-container-dos {
@@ -21,5 +20,5 @@
   align-items: center;
   align-content: center;
   height: 70.1%;
-  background-color: rgb(39, 88, 179);
+  background: url("./../../../../assets/tema.jpg");
 }

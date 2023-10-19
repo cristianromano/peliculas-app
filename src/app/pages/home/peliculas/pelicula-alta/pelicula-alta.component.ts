@@ -51,7 +51,12 @@ export class PeliculaAltaComponent implements OnInit {
         actor: this.actorArr,
       };
       await addDoc(collection(this.db, 'peliculas'), docData).then((e) => {
+        this.toastr.show(
+          'Pelicula dado de alta con exito',
+          'Pelicula en la base de datos'
+        );
         this.formGroup.reset();
+        this.file = null;
       });
     }
   }

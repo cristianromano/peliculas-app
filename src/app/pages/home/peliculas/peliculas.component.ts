@@ -31,10 +31,12 @@ export class PeliculasComponent implements OnInit {
   constructor(private route: Router) {}
 
   ngOnInit(): void {
+    this.data = [];
     this.getPeliculas();
   }
 
   getPeliculas() {
+    debugger;
     getDocs(collection(this.db, 'peliculas')).then((e) => {
       e.forEach((element) => {
         this.data.push({

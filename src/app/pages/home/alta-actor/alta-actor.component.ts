@@ -47,7 +47,7 @@ export class AltaActorComponent implements OnInit {
     if (this.formGroup?.valid && this.bandera) {
       // Aquí puedes enviar los datos a través de un servicio o realizar otras acciones necesarias
       this.registroActor().then((e) => {
-        console.log('exito');
+        this.toastr.show('Cargado con exito', 'Actor en la base de datos');
       });
     } else {
       console.log(
@@ -67,6 +67,7 @@ export class AltaActorComponent implements OnInit {
       };
       addDoc(collection(this.db, 'actores'), docData).then((e) => {
         this.formGroup.reset();
+        this.file = null;
       });
     });
   }
