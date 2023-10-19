@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { AltaActorComponent } from './alta-actor/alta-actor.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { GuardarCambiosGuard } from 'src/app/guards/guardar-cambios.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: 'home/alta-actor',
     component: AltaActorComponent,
+    canDeactivate: [GuardarCambiosGuard],
     canActivate: [AuthGuard],
   },
   {

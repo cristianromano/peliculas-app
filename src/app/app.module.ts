@@ -24,12 +24,22 @@ import { LoginModule } from './pages/login/login.module';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    NotFoundComponent,
+    ConfirmationDialogComponent,
+  ],
   imports: [
     LoginModule,
     MatCardModule,
     MatInputModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
     FormsModule,
