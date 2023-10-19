@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   app = initializeApp(environment.firebase);
   auth = getAuth(this.app);
 
@@ -27,6 +27,10 @@ export class NavbarComponent {
     this.estaLogueado();
   }
   estaLogueado() {
+    if (!this.userEmail) {
+      this.userEmail = null;
+    }
+
     this.auth.onAuthStateChanged((user) => {
       if (user) {
         this.userEmail = user.email;

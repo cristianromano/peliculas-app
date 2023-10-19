@@ -23,8 +23,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginModule } from './pages/login/login.module';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, NotFoundComponent],
   imports: [
     LoginModule,
     MatCardModule,

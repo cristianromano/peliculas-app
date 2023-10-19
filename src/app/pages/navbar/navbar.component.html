@@ -2,7 +2,7 @@
   <span><a [routerLink]="irSegunLog()">Laboratorio IV</a> </span>
   <span class="example-spacer"></span>
 
-  <div *ngIf="userEmail; else noLogueado">
+  <div *ngIf="userEmail != null; else noLogueado">
     <p style="margin: 1px">{{ userEmail }}</p>
     <button
       style="height: 25px; padding: 10px; margin-left: 30%"
