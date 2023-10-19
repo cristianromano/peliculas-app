@@ -4,7 +4,7 @@
 <div class="flex-container-dos">
   <mat-card class="example-card" *ngFor="let item of peliculasActor">
     <mat-card-title>{{ item.titulo }}</mat-card-title>
-    <img mat-card-image [src]="item.foto" style="height: 150px; width: 100px" />
+    <img mat-card-image [src]="item.foto" style="height: 240px; width: 150px" />
     <mat-card-content>
       <p>
         {{ item.descripcion }}
@@ -14,13 +14,15 @@
       </mat-label>
     </mat-card-content>
   </mat-card>
-  <app-bandera-detalle
-    [datoBandera]="bandera ? bandera : ''"
-  ></app-bandera-detalle>
-  <app-actores-detalle [actor]="nombreCompleto"></app-actores-detalle>
   <div>
-    <button mat-raised-button color="accent" (click)="irAltaPelicula()">
-      Subir Pelicula
-    </button>
+    <div class="flex-container">
+      <app-bandera-detalle
+        [datoBandera]="bandera ? bandera : ''"
+      ></app-bandera-detalle>
+      <app-actores-detalle [actor]="nombreCompleto"></app-actores-detalle>
+    </div>
   </div>
+  <button mat-raised-button color="accent" (click)="irAltaPelicula()">
+    Subir Pelicula
+  </button>
 </div>
